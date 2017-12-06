@@ -4,6 +4,7 @@
   "main": "build/index.js",
   "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
   "license": "MIT",
+  "homepage": "https://github.com/mcansh/react-loading-shimmer",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
