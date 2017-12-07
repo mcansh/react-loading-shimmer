@@ -1487,6 +1487,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _style = __webpack_require__(66);
 
 var _style2 = _interopRequireDefault(_style);
@@ -1506,7 +1508,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 var Loading = function Loading(_ref) {
   var count = _ref.count,
       lineHeight = _ref.lineHeight,
-      background = _ref.background;
+      background = _ref.background,
+      style = _ref.style;
 
   var countArray = [].concat(_toConsumableArray(Array(count).keys()));
   var unitRegex = /rem|px|%|em/;
@@ -1514,16 +1517,20 @@ var Loading = function Loading(_ref) {
   return _react2.default.createElement(
     'div',
     {
-      className: _style2.default.dynamic([['658149286', [background, realLineHeight]]]) + ' ' + 'loading'
+      className: _style2.default.dynamic([['3437705191', [background, realLineHeight]]]) + ' ' + 'loading'
     },
     countArray.map(function (div) {
-      return _react2.default.createElement('div', { key: 'loading__bar--' + div, className: _style2.default.dynamic([['658149286', [background, realLineHeight]]]) + ' ' + 'loading__bar'
+      return _react2.default.createElement('div', {
+        key: 'loading__bar--' + div,
+
+        style: _extends({}, style),
+        className: _style2.default.dynamic([['3437705191', [background, realLineHeight]]]) + ' ' + 'loading__bar'
       });
     }),
     _react2.default.createElement(
       'style',
       { jsx: true },
-      '\n          @keyframes shimmer {\n            0% {\n              background-position: -468px 0;\n            }\n            100% {\n              background-position: 468px 0;\n            }\n          }\n          .loading {\n            width: 100%;\n            position: relative;\n            background: ' + background + ';\n            padding: 1rem 2rem;\n          }\n          .loading__bar {\n            margin-bottom: ' + realLineHeight + ';\n            height: 1.1rem;\n            background-size: 800px 104px;\n            background-image: linear-gradient(\n              to right,\n              #f6f7f9 0%,\n              #e9ebee 20%,\n              #f6f7f9 40%,\n              #f6f7f9 100%\n            );\n            animation: shimmer 1s infinite linear;\n          }\n          .loading__bar:nth-of-type(2n) {\n            width: 200px;\n          }\n          .loading__bar:nth-of-type(4n) {\n            width: 120px;\n          }\n          .loading__bar:last-of-type {\n            margin-bottom: 0;\n          }\n        '
+      '\n        @keyframes shimmer {\n          0% {\n            background-position: -468px 0;\n          }\n          100% {\n            background-position: 468px 0;\n          }\n        }\n        .loading {\n          width: 100%;\n          position: relative;\n          background: ' + background + ';\n          padding: 1rem 2rem;\n        }\n        .loading__bar {\n          margin-bottom: ' + realLineHeight + ';\n          height: 1.1rem;\n          background-size: 800px 104px;\n          background-image: linear-gradient(\n            to right,\n            #f6f7f9 0%,\n            #e9ebee 20%,\n            #f6f7f9 40%,\n            #f6f7f9 100%\n          );\n          animation: shimmer 1s infinite linear;\n        }\n        .loading__bar:nth-of-type(2n) {\n          width: 200px;\n        }\n        .loading__bar:nth-of-type(4n) {\n          width: 120px;\n        }\n        .loading__bar:last-of-type {\n          margin-bottom: 0;\n        }\n      '
     )
   );
 };
@@ -1531,12 +1538,14 @@ var Loading = function Loading(_ref) {
 Loading.defaultProps = {
   count: 4,
   lineHeight: 1.1,
-  background: 'white'
+  background: 'white',
+  style: null
 };
 Loading.propTypes = {
   count: _propTypes2.default.number,
   lineHeight: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
-  background: _propTypes2.default.string
+  background: _propTypes2.default.string,
+  style: _propTypes2.default.shape()
 };
 
 exports.default = Loading;
