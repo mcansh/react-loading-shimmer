@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Loading = ({ count, lineHeight, background, style }) => {
+const Loading = ({ count, lineHeight, background, style, barStyle }) => {
   const countArray = [...Array(count).keys()];
   const unitRegex = /rem|px|%|em/;
   const realLineHeight = unitRegex.test(lineHeight)
     ? lineHeight
     : `${lineHeight}rem`;
   return (
-    <div className="loading">
+    <div className="loading" style={{ ...style }}>
       {countArray.map(div => (
         <div
           key={`loading__bar--${div}`}
           className="loading__bar"
-          style={{ ...style }}
+          style={{ ...barStyle }}
         />
       ))}
       <style jsx>{`
@@ -63,12 +63,15 @@ Loading.defaultProps = {
   lineHeight: 1.1,
   background: 'white',
   style: null,
+  barStyle: null,
 };
+
 Loading.propTypes = {
   count: PropTypes.number,
   lineHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   background: PropTypes.string,
   style: PropTypes.shape(),
+  barStyle: PropTypes.shape(),
 };
 
 export default Loading;

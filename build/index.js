@@ -1509,21 +1509,21 @@ var Loading = function Loading(_ref) {
   var count = _ref.count,
       lineHeight = _ref.lineHeight,
       background = _ref.background,
-      style = _ref.style;
+      style = _ref.style,
+      barStyle = _ref.barStyle;
 
   var countArray = [].concat(_toConsumableArray(Array(count).keys()));
   var unitRegex = /rem|px|%|em/;
   var realLineHeight = unitRegex.test(lineHeight) ? lineHeight : lineHeight + 'rem';
   return _react2.default.createElement(
     'div',
-    {
-      className: _style2.default.dynamic([['3437705191', [background, realLineHeight]]]) + ' ' + 'loading'
+    { style: _extends({}, style), className: _style2.default.dynamic([['3437705191', [background, realLineHeight]]]) + ' ' + 'loading'
     },
     countArray.map(function (div) {
       return _react2.default.createElement('div', {
         key: 'loading__bar--' + div,
 
-        style: _extends({}, style),
+        style: _extends({}, barStyle),
         className: _style2.default.dynamic([['3437705191', [background, realLineHeight]]]) + ' ' + 'loading__bar'
       });
     }),
@@ -1539,13 +1539,16 @@ Loading.defaultProps = {
   count: 4,
   lineHeight: 1.1,
   background: 'white',
-  style: null
+  style: null,
+  barStyle: null
 };
+
 Loading.propTypes = {
   count: _propTypes2.default.number,
   lineHeight: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]),
   background: _propTypes2.default.string,
-  style: _propTypes2.default.shape()
+  style: _propTypes2.default.shape(),
+  barStyle: _propTypes2.default.shape()
 };
 
 exports.default = Loading;
